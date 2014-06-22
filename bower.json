@@ -1,0 +1,20 @@
+{
+  "name": "Docs",
+  "version": "0.0.0",
+  "authors": [
+    "Corey Light <coreylight@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.8.2",
+    "requirejs": "~2.1.11",
+    "angular": "~1.2.18"
+  }
+}

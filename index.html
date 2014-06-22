@@ -1,0 +1,48 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <meta property="og:image" content=""/>
+  <meta property="og:description" content="" />
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <!--[if lt IE 9]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <noscript>This site requires javascript. Please use a more modern browser such as Google Chrome.</noscript>
+  <div ng-app="app" ng-controller="site" class="main" ng-cloak>
+  <h1>Kansas City Ipsum</h1>
+  
+  <div ng-bind-html="ipsum" id="ipsum"></div>
+  <!-- <textarea ng-model="ipsum"></textarea> -->
+
+  <div class="controls cf">
+  <label class="bbq">BBQ Level
+  <input type="range" ng-model="bbqLevel" min="1" max="20"/>
+  </label>
+  <!-- <label>Pitch Levels
+  <input type="range" ng-model="wordsLevel" min="0" max="10"/>
+  </label> -->
+  <button ng-click="generate()">Regenerate</button>
+  </div>
+
+  <h2 class="what-the">What...?</h2>
+  <p>After noticing a glaring hole in the lorem-ipsum generator market, KC-Ipsum was born after analyzing 31,482 articles encompassing 9,702,191 words from <a href="http://pitch.com" target="_blank">The Pitch</a> and sprinkling in vocabulary from Wikipedia, BBQ menus, and travel guides. May all of your prototypes and mock-ups represent KC well.</p>
+
+  </div><!-- site -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="analysis-small.json"></script>
+  <script src="page.js"></script>
+  <!-- <script src="bower_components/requirejs/require.js"></script> -->
+</body>
+</html>

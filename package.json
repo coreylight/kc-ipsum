@@ -1,0 +1,27 @@
+{
+  "name": "webscrape",
+  "version": "0.0.0",
+  "description": "kc-ipsum ========",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-compass": "^0.8.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Corey Light",
+  "license": "None",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreylight/kc-ipsum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreylight/kc-ipsum/issues"
+  },
+  "homepage": "https://github.com/coreylight/kc-ipsum"
+}

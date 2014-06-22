@@ -1,1 +1,4 @@
 .sass-cache
+scrape
+node_modules
+bower_components

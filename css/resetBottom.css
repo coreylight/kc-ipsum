@@ -1,0 +1,143 @@
+/* line 1, ../sass/resetBottom.scss */
+.ir {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  display: block;
+  text-indent: -100%;
+  overflow: hidden;
+}
+
+/* line 3, ../sass/resetBottom.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 4, ../sass/resetBottom.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* line 5, ../sass/resetBottom.scss */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 7, ../sass/resetBottom.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 8, ../sass/resetBottom.scss */
+.clearfix {
+  *zoom: 1;
+}
+/* line 8, ../sass/resetBottom.scss */
+.clearfix:before {
+  content: "";
+  display: table;
+}
+/* line 8, ../sass/resetBottom.scss */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 10, ../sass/resetBottom.scss */
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media print {
+  /* line 12, ../sass/resetBottom.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* line 14, ../sass/resetBottom.scss */
+  a {
+    text-decoration: underline;
+  }
+  /* line 14, ../sass/resetBottom.scss */
+  a:visited {
+    text-decoration: underline;
+  }
+  /* line 14, ../sass/resetBottom.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 15, ../sass/resetBottom.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 16, ../sass/resetBottom.scss */
+  .ir
+  a:after {
+    content: "";
+  }
+
+  /* line 16, ../sass/resetBottom.scss */
+  a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* line 17, ../sass/resetBottom.scss */
+  pre, blockquote {
+    border: 1px solid #999999;
+    page-break-inside: avoid;
+  }
+
+  /* line 17, ../sass/resetBottom.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* line 18, ../sass/resetBottom.scss */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* line 18, ../sass/resetBottom.scss */
+  img {
+    page-break-inside: avoid;
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 20, ../sass/resetBottom.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 20, ../sass/resetBottom.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}
