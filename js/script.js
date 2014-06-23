@@ -63,9 +63,9 @@ app.service('ipsum',['$rootScope', '$sce', 'hoods', 'words', 'bbq', 'attractions
         //pick out word and push
         var word = areas[pickedArea].data[randAreaWord];
         //don't repeat yourself
-        // if(picked.indexOf(word) == -1){
+        if(picked.indexOf(word) == -1 /*|| areas[pickedArea].title == 'bbq'*/){
           picked.push(areas[pickedArea].data[randAreaWord]);
-        // }
+        }
       }
       return $sce.trustAsHtml(this.makeSentences(picked));
     }
@@ -87,7 +87,7 @@ app.service('words',['$window', function($window){
 app.service('bbq',[function(){
   return {
     title:'bbq',
-    data:['Arthur Bryant\'s','Gates','Oklahoma Joe\'s','LC\'s','Jack Stack','Woodyard', 'BB\'s Lawnside', 'Zarda\'s','American Royal World Series of BBQ','burnt ends','pulled-pork','Z-Man','onion rings','fries','sausage','sauce','smoked turkey', 'smoked ham', 'beef brisket','hog heaven','smoked chicken dinner','baby back ribs','pork spare ribs','KC Strip','short end','long end','beef on bun','chicken wings','mixed plate','bbq beans','cole slaw','potato salad','Hi, may I help you']
+    data:['Arthur Bryant\'s','Gates','Oklahoma Joe\'s','LC\'s','Jack Stack','Woodyard', 'BB\'s Lawnside', 'Zarda\'s','American Royal World Series of BBQ', 'Big T\'s', 'burnt ends','pulled-pork','Z-Man','onion rings','fries','sausage','sauce','smoked turkey', 'smoked ham', 'beef brisket','hog heaven','smoked chicken dinner','baby back ribs','pork spare ribs','KC Strip','short end','long end','beef on bun','chicken wings','mixed plate','bbq beans','cole slaw','potato salad','Hi, may I help you', 'pork', 'ham', 'chorizo', 'maple', 'brown sugar', 'spicy', 'mild', 'smoker', 'grilled', 'strawberry soda', 'entire loaf of white bread', 'tailgaiting', 'meat', 'pork tenderloin', 'salty', 'pepper', 'half-rack', 'full-rack']
   }
 }])
 
