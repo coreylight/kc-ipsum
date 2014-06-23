@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 var totalArticles = 0;
 var totalWords = 0;
 
@@ -87,9 +88,9 @@ function stripInfrequent(){
 
 function readFile(file,last){
   //this path won't work on github due to you not having files, but you could generate them with scraper.js!
-  var file = file ? file : 0;
-  var path = __dirname+'/data/'+files[file]+'.json';
-  fs.readFile(path, 'utf8', function (err, data) {
+  file = file != undefined ? file : 0;
+  var filePath = path.normalize(__dirname+'/../'+'scrape/'+files[file]+'.json');
+  fs.readFile(filePath, 'utf8', function (err, data) {
     if (err) {
       console.log('Error: ' + err);
       return;
@@ -97,9 +98,9 @@ function readFile(file,last){
     var d = Date.now();
 
     //log out what file we are on
-    console.log('parsing '+path);
+    console.log('parsing '+filePath);
     parseWords(JSON.parse(data));
-    if(last){
+    if(file+1==files.length){
       //sort words from highest frequency to lowest
       topWords.sort(function(a,b){
         return b.c-a.c;
@@ -107,14 +108,14 @@ function readFile(file,last){
       //make file smaller
       stripInfrequent();
       //write it out
-      fs.writeFile(__dirname+'/analysis.json', JSON.stringify(topWords));
+      fs.writeFile(path.normalize(__dirname+'/../analysis-1.json'), JSON.stringify(topWords));
 
       //extra info
       console.log('total articles: '+totalArticles);
       console.log('total words: '+totalWords);
     }else{
       //iterate again if we aren't on the last one
-      readFile(file+1,file+1==files.length-1);
+      readFile(file+1);
     }
     //let us know how fast/slow each file is running
     console.log('end - '+(Date.now()-d));
