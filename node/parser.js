@@ -1,12 +1,9 @@
 var fs = require('fs');
-//var stemmer = require('./libs/stemmer');
-
 var totalArticles = 0;
 var totalWords = 0;
-var currentFile = null;
 
+//you won't have these files on github due to me not wanting to publish full articles verbatim
 var files = ['scrape-1','scrape-17-17','scrape-18-19','scrape-2-6','scrape-21-21','scrape-22-22','scrape-7-16', 'scrape-23-28','scrape-29-34','scrape-34-39','scrape-39-44','scrape-44-49', 'scrape-50-54', 'scrape-56-60'];
-
 for(var i=61;i<222;i=i+5){
   files.push('scrape-'+i+'-'+(i+4));
 }
@@ -28,29 +25,14 @@ var others = {
 }
 
 for(var part in others){
-  // for(var i=0;i<others[part].length;i++){
-  //   if(stopWords.indexOf(others[part][i])>-1){
-  //     stopWords.splice(i,1);
-  //   }
-  // }
+  //combine all the stopwords
   stopWords = stopWords.concat(others[part]);
 }
-
-// for(var i=0;i<others.others.length;i++){
-//   var part = others.others[i];
-//   if(stopWords.indexOf(part) > -1){
-//     others.others.splice(i,1)
-//   }
-//   // for(var i=0;i<others[part].length;i++){
-//   //   if(stopWords.indexOf(others[part][i])>-1){
-//   //     stopWords.splice(i,1);
-//   //   }
-//   // }
-// }
 
 var topWords = [];
 
 function inTopWords(word){
+  //test if word is already in topwords
   var len = topWords.length;
   while(len--){
     if(topWords[len].w == word){
@@ -61,34 +43,40 @@ function inTopWords(word){
 }
 
 function iterator(input) {
-
+  //split words into an array by space or newline
   var words = input.split(/[\s\n]/);
+  //counting words, just for fun
   totalWords = totalWords+words.length;
 
-  // build an object to count word frequency
   for(var i=0;i<words.length;i++){
     var word = words[i];
+    //normalizing the word a bit
     word = String(word).replace(/[\/\\]/,' ').replace(/[^a-z'\- ]/gi,'').toLowerCase();
+    //if the word is in the stopwords list, go on to the next word
     if(stopWords.indexOf(word) > -1){continue;}
 
     var found = inTopWords(word);
     if(found > -1){
+      //increase count if already in topwords
       topWords[found].c = topWords[found].c+1; 
     }else{
+      //push if else
       topWords.push({w:word,c:1});
     }
   }
 }
 
 function parseWords(data){
+  //counting just for fun
   totalArticles = totalArticles+data.length;
+  //run through each article
   for(var k=0;k<data.length;k++){
     iterator(data[k].text);
   }
-  //return topWords;
 }
 
 function stripInfrequent(){
+  //limit the number of words in analysis to those that are used more than 15 times total
   var len = topWords.length;
   while(len--){
     if(topWords[len].c < 15){
@@ -98,6 +86,8 @@ function stripInfrequent(){
 }
 
 function readFile(file,last){
+  //this path won't work on github due to you not having files, but you could generate them with scraper.js!
+  var file = file ? file : 0;
   var path = __dirname+'/data/'+files[file]+'.json';
   fs.readFile(path, 'utf8', function (err, data) {
     if (err) {
@@ -106,27 +96,32 @@ function readFile(file,last){
     }
     var d = Date.now();
 
+    //log out what file we are on
     console.log('parsing '+path);
     parseWords(JSON.parse(data));
     if(last){
+      //sort words from highest frequency to lowest
       topWords.sort(function(a,b){
         return b.c-a.c;
       })
+      //make file smaller
       stripInfrequent();
+      //write it out
       fs.writeFile(__dirname+'/analysis.json', JSON.stringify(topWords));
+
+      //extra info
       console.log('total articles: '+totalArticles);
       console.log('total words: '+totalWords);
     }else{
+      //iterate again if we aren't on the last one
       readFile(file+1,file+1==files.length-1);
     }
+    //let us know how fast/slow each file is running
     console.log('end - '+(Date.now()-d));
+    //set to null for garbage collection(?)
     data = null;
   });
 }
 
-readFile(0);
-
-// for(var k=0;k<files.length;k++){
-//   var string = __dirname+'/data/'+files[k]+'.json';
-//   readFile(string,k==files.length-1);
-// }
+//kick it all off!
+readFile();

@@ -30,8 +30,6 @@ app.service('ipsum',['$rootScope', '$sce', 'hoods', 'words', 'bbq', 'attractions
         var s = array.join(' ');
         //capitalize first word and add period
         s = s.charAt(0).toUpperCase() + s.slice(1) + '. ';
-        //add to string
-        //string+='<p>'+s+'</p>';
         string+=s;
       }
       return string;
@@ -39,14 +37,18 @@ app.service('ipsum',['$rootScope', '$sce', 'hoods', 'words', 'bbq', 'attractions
     pickArea:function(){
       var areaDistributions = [];
       for(var j=0;j<this.areas.length;j++){
+        //let's be able to set level to 0 if we want to
         var level = $rootScope[this.areas[j].title+'Level'] != undefined ? $rootScope[this.areas[j].title+'Level'] : 1;
         if(level < 1){continue;}
         areaDistributions.push([]);
+        //push as many high random numbers as the area has chances to win
         for(var k=0;k<level;k++){
          areaDistributions[j].push(Math.floor(Math.random()*1000000));
         }
+        //pick the highest out of the area numbers
         areaDistributions[j] = Math.max.apply(Math,areaDistributions[j]);
       }
+      //pick the highest out of the areas
       var winner = Math.max.apply(Math,areaDistributions);
       return areaDistributions.indexOf(winner);
     },
@@ -72,6 +74,7 @@ app.service('ipsum',['$rootScope', '$sce', 'hoods', 'words', 'bbq', 'attractions
 
 app.service('words',['$window', function($window){
   var words = [];
+  //restructure the data a bit
   $window.words.forEach(function(word){
     words.push(word.w);
   })
