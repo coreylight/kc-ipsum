@@ -6,12 +6,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
-  <meta name="description" content="">
+  <title>Kansas City Ipsum</title>
+  <meta name="description" content="Kansas City Ipsum, a data-driven lorem-ipsum generator built by Corey Light">
   <meta name="viewport" content="width=device-width">
-  <meta property="og:image" content=""/>
-  <meta property="og:description" content="" />
-  <link rel="shortcut icon" href="img/favicon.png">
+  <!-- <link rel="shortcut icon" href="img/favicon.png"> -->
   <link rel="stylesheet" href="css/style.css">
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
@@ -24,15 +22,12 @@
   <h1>Kansas City Ipsum</h1>
   
   <div ng-bind-html="ipsum" id="ipsum"></div>
-  <!-- <textarea ng-model="ipsum"></textarea> -->
 
   <div class="controls cf">
   <label class="bbq">BBQ Level
   <input type="range" ng-model="bbqLevel" min="1" max="20"/>
   </label>
-  <!-- <label>Pitch Levels
-  <input type="range" ng-model="wordsLevel" min="0" max="10"/>
-  </label> -->
+
   <button ng-click="generate()">Regenerate</button>
   </div>
 
@@ -44,6 +39,6 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
   <script src="analysis-small.json"></script>
   <script src="js/script.js"></script>
-  <!-- <script src="bower_components/requirejs/require.js"></script> -->
+  
 </body>
 </html>
